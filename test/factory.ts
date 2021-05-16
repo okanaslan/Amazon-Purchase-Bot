@@ -1,12 +1,12 @@
-import { User, UserDocument } from "../src/models/user";
+import { Item, ItemDocument } from "../src/models/item";
 
-type Document = UserDocument;
+type Document = ItemDocument;
 
 export class Factory {
     static generate<M, D extends Document, K extends keyof D>(object: M, args?: { field: K; value: D[K] }[]): D {
         let temp: D;
-        if (object instanceof User) {
-            temp = this.generateUser<D>();
+        if (object instanceof Item) {
+            temp = this.generateItem<D>();
         } else {
             throw Error(`${object} is not a valid model!`);
         }
@@ -27,10 +27,11 @@ export class Factory {
         return array;
     }
 
-    private static generateUser<D extends Document>(): D {
-        const user = new User();
-        user.username = "user";
+    private static generateItem<D extends Document>(): D {
+        const item = new Item();
+        item.url = "http://www.google.com/ncr";
+        item.price = 100;
 
-        return user as D;
+        return item as D;
     }
 }
