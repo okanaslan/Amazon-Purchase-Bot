@@ -1,10 +1,19 @@
 import { Item } from "../models/item";
 
 export const Items: Item[] = [
+    // {
+    //     url: "https://www.amazon.com/dp/B08J5MQ6D3/ref=nav_timeline_asin?_encoding=UTF8&psc=1",
+    //     price: 1000,
+    // },
     {
-        url: "https://www.amazon.com/gp/product/B08L8KC1J7/ref=ox_sc_saved_title_4?smid=ATVPDKIKX0DER&psc=1",
-        price: 830,
+        url:
+            "https://www.amazon.com/MSI-GeForce-GTX-1660-OC/dp/B07PBLDV3D/ref=sr_1_6?_encoding=UTF8&c=ts&dchild=1&keywords=Computer+Graphics+Cards&qid=1621257257&s=pc&sr=1-6&ts_id=284822",
+        price: 1000,
     },
+    // {
+    //     url: "https://www.amazon.com/gp/product/B08L8KC1J7/ref=ox_sc_saved_title_4?smid=ATVPDKIKX0DER&psc=1",
+    //     price: 830,
+    // },
     // {
     //     url: "https://www.amazon.com/gp/product/B08X4V8N5Q/ref=ox_sc_saved_title_1?smid=ATVPDKIKX0DER&psc=1",
     //     price: 590,
@@ -21,10 +30,10 @@ export const Items: Item[] = [
     //     url: "https://www.amazon.com/gp/product/B08X4VJ6SB/ref=ox_sc_saved_title_5?smid=ATVPDKIKX0DER&psc=1",
     //     price: 590,
     // },
-    {
-        url: "https://www.amazon.com/gp/product/B08WT47L8B/ref=ox_sc_saved_title_6?smid=ATVPDKIKX0DER&psc=1",
-        price: 590,
-    },
+    // {
+    //     url: "https://www.amazon.com/gp/product/B08WT47L8B/ref=ox_sc_saved_title_6?smid=ATVPDKIKX0DER&psc=1",
+    //     price: 590,
+    // },
     // {
     //     url: "https://www.amazon.com/gp/product/B08WHJPBFX/ref=ox_sc_saved_title_7?smid=ATVPDKIKX0DER&psc=1",
     //     price: 590,
