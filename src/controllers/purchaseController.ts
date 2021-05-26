@@ -18,6 +18,7 @@ export class PurchaseController {
     private static async buyLoop(item: Item) {
         const driver = await new Builder().forBrowser(Browser.CHROME).build();
         let success = false;
+        await PurchaseController.login(driver);
         while (!success) {
             success = await PurchaseController.buy(driver, item);
         }
@@ -27,7 +28,6 @@ export class PurchaseController {
         // eslint-disable-next-line no-async-promise-executor
         return new Promise<boolean>(async (resolve) => {
             try {
-                await PurchaseController.login(driver);
                 await PurchaseController.openItem(driver, item);
                 const price = await PurchaseController.getPrice(driver);
                 if (price < item.price) {

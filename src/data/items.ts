@@ -1,19 +1,18 @@
 import { Item } from "../models/item";
 
 export const Items: Item[] = [
-    // {
-    //     url: "https://www.amazon.com/dp/B08J5MQ6D3/ref=nav_timeline_asin?_encoding=UTF8&psc=1",
-    //     price: 1000,
-    // },
     {
-        url:
-            "https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B07FMHR1X5&Quantity.1=1",
-        price: 1000,
+        url: "https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B08WHJPBFX&Quantity.1=1",
+        price: 540,
     },
-    // {
-    //     url: "https://www.amazon.com/gp/product/B08L8KC1J7/ref=ox_sc_saved_title_4?smid=ATVPDKIKX0DER&psc=1",
-    //     price: 830,
-    // },
+    {
+        url: "https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B08WM28PVH&Quantity.1=1",
+        price: 450,
+    },
+    {
+        url: "https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B08WGTL4CW&Quantity.1=1",
+        price: 540,
+    },
     // {
     //     url: "https://www.amazon.com/gp/product/B08X4V8N5Q/ref=ox_sc_saved_title_1?smid=ATVPDKIKX0DER&psc=1",
     //     price: 590,
