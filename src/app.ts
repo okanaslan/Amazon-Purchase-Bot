@@ -1,14 +1,9 @@
-import { server } from "./server";
 import { config } from "dotenv";
-import { SeleniumUtils } from "./utils/seleniumUtils";
+import { PurchaseController } from "./controllers/purchaseController";
 
 config();
 
-server.listen(3000, "Localhost", () => {
-    console.info(`Express application listening at http://localhost:3000`);
-});
-
-SeleniumUtils.buyAll()
+PurchaseController.buyMany()
     .then()
     .catch((error) => {
         console.error(error);

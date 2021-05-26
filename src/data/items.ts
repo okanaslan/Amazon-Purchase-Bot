@@ -7,7 +7,7 @@ export const Items: Item[] = [
     // },
     {
         url:
-            "https://www.amazon.com/MSI-GeForce-GTX-1660-OC/dp/B07PBLDV3D/ref=sr_1_6?_encoding=UTF8&c=ts&dchild=1&keywords=Computer+Graphics+Cards&qid=1621257257&s=pc&sr=1-6&ts_id=284822",
+            "https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B07FMHR1X5&Quantity.1=1",
         price: 1000,
     },
     // {
