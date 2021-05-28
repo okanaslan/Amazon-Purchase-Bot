@@ -88,9 +88,9 @@ export class PurchaseController {
     private static async waitForApproval(driver: WebDriver) {
         const approvalVisible = await SeleniumUtils.isElementExists(driver, '//*[@id="body"]/div/div/div[2]/span');
         if (approvalVisible) {
-            driver.sleep(60000);
+            await driver.sleep(60000);
         } else {
-            driver.sleep(100);
+            await driver.sleep(100);
         }
     }
 
