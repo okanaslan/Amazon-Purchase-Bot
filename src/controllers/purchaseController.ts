@@ -19,6 +19,7 @@ export class PurchaseController {
         const driver = await new Builder().forBrowser(Browser.CHROME).build();
         let success = false;
         await PurchaseController.login(driver);
+        await PurchaseController.waitForApproval(driver);
         while (!success) {
             success = await PurchaseController.buy(driver, item);
         }
@@ -81,6 +82,15 @@ export class PurchaseController {
             return priceInt;
         } else {
             throw Error("Price cannot found!");
+        }
+    }
+
+    private static async waitForApproval(driver: WebDriver) {
+        const approvalVisible = await SeleniumUtils.isElementExists(driver, '//*[@id="body"]/div/div/div[2]/span');
+        if (approvalVisible) {
+            driver.sleep(60000);
+        } else {
+            driver.sleep(100);
         }
     }
 
