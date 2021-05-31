@@ -20,6 +20,7 @@ export class PurchaseController {
         let success = false;
         await PurchaseController.login(driver);
         await PurchaseController.waitForApproval(driver);
+        await PurchaseController.waitForBotCheck(driver);
         while (!success) {
             success = await PurchaseController.buy(driver, item);
         }
@@ -30,11 +31,12 @@ export class PurchaseController {
         return new Promise<boolean>(async (resolve) => {
             try {
                 await PurchaseController.openItem(driver, item);
+                await PurchaseController.waitForBotCheck(driver);
                 const price = await PurchaseController.getPrice(driver);
                 if (price < item.price) {
                     await PurchaseController.addToCart(driver);
-                    await PurchaseController.proceedToCheckOut(driver);
-                    await PurchaseController.placeOrder(driver);
+                    await PurchaseController.forceProceedToCheckOut(driver);
+                    await PurchaseController.forcePlaceOrder(driver);
                 } else {
                     return resolve(false);
                 }
@@ -94,17 +96,44 @@ export class PurchaseController {
         }
     }
 
+    private static async waitForBotCheck(driver: WebDriver) {
+        const approvalVisible = await SeleniumUtils.isElementExists(driver, "/html/body/div/div[1]/div[2]/div/h4");
+        if (approvalVisible) {
+            await driver.sleep(60000);
+        } else {
+            await driver.sleep(100);
+        }
+    }
+
     private static async addToCart(driver: WebDriver) {
         await SeleniumUtils.clickIfExists(driver, "/html/body/div[2]/div/div/form/span/input[3]");
     }
 
-    private static async proceedToCheckOut(driver: WebDriver) {
-        await SeleniumUtils.clickIfExists(driver, '//*[@id="sc-buy-box-ptc-button"]/span/input');
+    // private static async proceedToCheckOut(driver: WebDriver) {
+    //     await SeleniumUtils.clickIfExists(driver, '//*[@id="sc-buy-box-ptc-button"]/span/input');
+    // }
+
+    private static async forceProceedToCheckOut(driver: WebDriver) {
+        try {
+            const button = await driver.findElement(By.xpath('//*[@id="sc-buy-box-ptc-button"]/span/input'));
+            await button.click();
+        } catch (e) {
+            await driver.sleep(100);
+            await this.forceProceedToCheckOut(driver);
+        }
     }
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    private static async placeOrder(driver: WebDriver) {
-        await SeleniumUtils.clickIfExists(driver, '//*[@id="placeYourOrder"]/span/input');
+    private static async forcePlaceOrder(driver: WebDriver) {
+        try {
+            const button = await driver.findElement(By.xpath('\'//*[@id="placeYourOrder"]/span/input'));
+            await button.click();
+        } catch (e) {
+            await driver.sleep(100);
+            await this.forceProceedToCheckOut(driver);
+        }
     }
+
+    // private static async placeOrder(driver: WebDriver) {
+    //     await SeleniumUtils.clickIfExists(driver, '//*[@id="placeYourOrder"]/span/input');
+    // }
 }
