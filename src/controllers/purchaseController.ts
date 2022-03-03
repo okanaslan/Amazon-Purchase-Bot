@@ -2,31 +2,29 @@ import { Browser, Builder, By, Key, until, WebDriver } from "selenium-webdriver"
 
 import { SeleniumUtils } from "../utils/seleniumUtils";
 import { Item } from "../models/item";
-import { Items } from "../data/items";
+import { items } from "../config";
 
 export class PurchaseController {
     static async buyMany() {
-        const items = Items;
-
         await Promise.all(
             items.map((item) => {
-                PurchaseController.buyLoop(item);
+                PurchaseController.purchaseLoop(item);
             })
         );
     }
 
-    private static async buyLoop(item: Item) {
+    private static async purchaseLoop(item: Item) {
         const driver = await new Builder().forBrowser(Browser.CHROME).build();
         let success = false;
         await PurchaseController.login(driver);
         await PurchaseController.waitForApproval(driver);
         await PurchaseController.waitForBotCheck(driver);
         while (!success) {
-            success = await PurchaseController.buy(driver, item);
+            success = await PurchaseController.purchase(driver, item);
         }
     }
 
-    private static buy(driver: WebDriver, item: Item) {
+    private static purchase(driver: WebDriver, item: Item) {
         // eslint-disable-next-line no-async-promise-executor
         return new Promise<boolean>(async (resolve) => {
             try {
