@@ -1,7 +1,7 @@
 import { config } from "dotenv";
-import { PurchaseController } from "./controllers/purchaseController";
-
 config();
+
+import { PurchaseController } from "./controllers/purchaseController";
 
 PurchaseController.buyMany()
     .then()

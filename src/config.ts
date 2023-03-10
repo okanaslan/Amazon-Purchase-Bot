@@ -1,10 +1,11 @@
-import { Item } from "./models/item";
+import { Config } from "./types";
 
-export const seller = "Amazon.com";
-
-export const items: Item[] = [
-    {
-        url: "https://www.amazon.com/gp/aws/cart/add.html?ASIN.1=B08WHJPBFX&Quantity.1=1",
-        price: 540,
-    },
-];
+export const config: Config = {
+    items: [
+        {
+            url: "https://www.amazon.com/YSSOA-Gaming-Office-Adjustable-Chair/dp/B08XQNSH7B",
+            price: 540,
+        },
+    ],
+    seller: "Amazon.com",
+};
